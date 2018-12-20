@@ -198,8 +198,12 @@ namespace ListTests
 			slst.push_back(5);
 			slst.push_front(4);
 			slst.push_back(6);
-
-			Assert::AreEqual(-1, (int) lst->find_first_entrance(slst));
+			try {
+				lst->find_first_entrance(slst);
+			}
+			catch (std::exception e) {
+				Assert::AreEqual(e.what(), "List doesn`t contain outer list");
+			}
 		}
 
 		TEST_METHOD(find_first_entrance_3node_list) {
@@ -235,7 +239,7 @@ namespace ListTests
 			slst.insert(3, 0);
 			//345
 
-			Assert::AreEqual(1, (int)lst->find_first_entrance(slst));
+			Assert::AreEqual((size_t)1, lst->find_first_entrance(slst));
 		}
 
 		TEST_METHOD(find_first_entrance_outer_list_bigger) {
@@ -251,7 +255,12 @@ namespace ListTests
 			slst.push_back(4);
 			slst.push_back(5);
 
-			Assert::AreEqual(-1, (int)lst->find_first_entrance(slst));
+			try {
+				lst->find_first_entrance(slst);
+			}
+			catch (std::exception e) {
+				Assert::AreEqual(e.what(), "List doesn`t contain outer list");
+			}
 		}
 
 		TEST_METHOD(find_first_entrance_self) {

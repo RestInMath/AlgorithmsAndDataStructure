@@ -201,8 +201,8 @@ size_t List::find_first_entrance(List l) {
 		cur = cur->next;
 		counter++;
 	}
-	//List doesn`t contain outer list
-	return -1;
+
+	throw std::out_of_range("List doesn`t contain outer list");
 }
 
 //check if index is out of range
