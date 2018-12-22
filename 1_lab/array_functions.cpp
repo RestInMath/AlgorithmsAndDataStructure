@@ -33,20 +33,20 @@ void fill_array(int ** const frame_arr, const size_t lines_num, const size_t col
 	//this variable will change during the algorithm work
 	int fill_value;
 
-	for (int i = 0; i < lines_num; i++) {
+	for (size_t i = 0; i < lines_num; i++) {
 
 		frame_arr[i] = new int[column_num];
 		fill_value = first_val - 1;
 
 		//value of each element forms in 'cell_value' function
-		for (int j = 0; j < column_num; j++)
+		for (size_t j = 0; j < column_num; j++)
 			frame_arr[i][j] = cell_value(i, j, column_num, lines_num, fill_value);
 	}
 }
 
 void print_array(int ** const frame_arr, const size_t lines_num, const size_t column_num) {
-	for (int i = 0; i < lines_num; i++) {
-		for (int j = 0; j < column_num; j++) {
+	for (size_t i = 0; i < lines_num; i++) {
+		for (size_t j = 0; j < column_num; j++) {
 			//print array element, new line for new array row
 			std::cout << frame_arr[i][j] << (j == column_num - 1 ? '\n' : '\t');
 		}
@@ -67,8 +67,8 @@ bool is_equal(int ** const array1, const size_t a1_lines, const size_t a1_column
 }
 
 void delete_array(int ** const array, size_t lines_num) {
-	for (int i = lines_num; i >= 0; i--) {
-		delete[] array[i];
+	for (size_t i = 0; i < lines_num; i++) {
+		delete array[i];
 	}
-	//delete[] array;
+	delete[] array;
 }
