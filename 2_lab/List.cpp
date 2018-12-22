@@ -148,8 +148,8 @@ void List::print_to_console() {
 
 void List::clear() {
 	while (root != nullptr) {
-		//delete first node, go to next
-		pop_front();
+		//delete last node while list is not empty
+		pop_back();
 	}
 	list_size = 0;
 }
@@ -240,4 +240,9 @@ bool List::isEqual(List * other)
 		cur = cur->next;
 	}
 	return true;
+}
+
+List::~List()
+{
+	clear();
 }
